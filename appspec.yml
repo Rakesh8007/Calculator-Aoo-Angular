@@ -4,9 +4,6 @@ files:
   - source: /
     destination: /var/www/html/
 hooks:
-  ApplicationStart:
-    - location: scripts/application_start.sh
-      timeout: 180
   ValidateService:
     - location: Scripts/MonitorService.sh
       timeout: 3600
