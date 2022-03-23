@@ -3,8 +3,4 @@ os: linux
 files:
   - source: /
     destination: /var/www/html/
-hooks:
-  ValidateService:
-    - location: Scripts/MonitorService.sh
-      timeout: 3600
-      runas: codedeployuser
+
