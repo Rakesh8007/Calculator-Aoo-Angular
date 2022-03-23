@@ -1,25 +1,24 @@
-version: 0.1
+# Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
+version: 0.2
 
 phases:
   install:
-            runtime-versions:
-            nodejs: 12
-        commands:
-            - echo "installing something"
+    runtime-versions:
+      nodejs: 12
   pre_build:
     commands:
-      - echo installing dependencies...
-      - npm i -g @angular/cli
+      - echo Installing source NPM dependencies...
       - npm install
   build:
     commands:
-      # - echo testing...
-      # - echo building...
-      - ng build --prod
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
   post_build:
-       commands:
-        - echo "we are in the post bild build phase"
+    commands:
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
+# used only for building and testing.
 artifacts:
   files:
-    - "**/*"
-  discard-paths: no
+    - '**/*'
