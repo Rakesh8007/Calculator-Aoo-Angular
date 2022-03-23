@@ -7,7 +7,7 @@ hooks:
   ApplicationStart:
     - location: scripts/application_start.sh
       timeout: 300
-      runas: ec2-user
+      runas: root
   ValidateService:
     - location: Scripts/MonitorService.sh
       timeout: 3600
