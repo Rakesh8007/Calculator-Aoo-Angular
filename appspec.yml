@@ -6,8 +6,7 @@ files:
 hooks:
   ApplicationStart:
     - location: scripts/application_start.sh
-      timeout: 300
-      runas: root
+      timeout: 180
   ValidateService:
     - location: Scripts/MonitorService.sh
       timeout: 3600
