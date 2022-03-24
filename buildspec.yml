@@ -11,7 +11,5 @@ phases:
     commands:
         - echo Build started 
 artifacts:
-    files:
-        - '**/*'
-    base-directory: 'dist*'
-    discard-paths: no
+  files:
+    - '**/*'
