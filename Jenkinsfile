@@ -8,7 +8,13 @@ pipeline{
             steps{
                 git 'https://github.com/Rakesh8007/Calculator-Aoo-Angular.git'
             }
-         }        
+         } 
+      stage ("sonarqube analysis"){
+        steps{
+          nodejs (nodeJSInstallation:'nodejs'){
+                sh "npm install"
+          }
+        }
        stage('Build'){
             steps{
                 sh 'mvn clean package'
