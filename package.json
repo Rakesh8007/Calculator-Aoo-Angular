@@ -45,3 +45,7 @@
     "typescript": "~3.4.3"
   }
 }
+
+"scripts": {
+    "sonar": "sonar-scanner"
+}
