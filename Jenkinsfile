@@ -16,7 +16,7 @@ pipeline{
                  }
                       }
         stage('SonarQube analysis') {
-          def scannerHome = tool 'sonarqube-7.9.5';
+        //  def scannerHome = tool 'sonarqube-7.9.5';
         steps{
         withSonarQubeEnv('SonarQube') { 
         // If you have configured more than one global server connection, you can specify its name
