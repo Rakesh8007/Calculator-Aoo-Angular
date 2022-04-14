@@ -4,11 +4,11 @@ pipeline{
         PATH = "$PATH:/usr/share/apache-maven"
     }
     stages{
-       stage('GetCode'){
-            steps{
-                git 'https://github.com/Rakesh8007/Calculator-Aoo-Angular.git'
-            }
-         } 
+      // stage('GetCode'){
+        //     steps{
+        //         git 'https://github.com/Rakesh8007/Calculator-Aoo-Angular.git'
+        //     }
+        //  } 
        stage('Install dependencies') {
         nodejs('nodejs') {
             sh 'npm install'
