@@ -2,9 +2,13 @@ pipeline {
     agent any
 
     stages {
+        stage('install dependencies'){
+            sh 'npm install'
+        }
         stage('Build') {
             steps {
                 echo 'building'
+                sh 'npm run build'
             }
         }
         stage('Test') {
@@ -15,12 +19,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh './script/deploy.sh'
             }
         }
         stage('ExecuteSonarQubeReport') {
          steps {
              script{
-                sh 'npm i'
                // sh 'npm run sonar'
     }
       
