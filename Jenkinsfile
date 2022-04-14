@@ -22,6 +22,11 @@ pipeline{
         }
         
     }
+    stage('Deploy'){
+            steps{
+                sh './script/deploy.sh'
+            }
+         }
         stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
