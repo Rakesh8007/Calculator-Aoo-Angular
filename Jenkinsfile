@@ -9,18 +9,19 @@ pipeline{
                 git 'https://github.com/Rakesh8007/Calculator-Aoo-Angular.git'
             }
          } 
-      stage('Install') {
-      steps { sh'npm install' }
+       stage('Install dependencies') {
+        nodejs('nodejs') {
+            sh 'npm install'
+            echo "Modules installed"
+        }
+        }
+       stage('Build') {
+        nodejs('nodejs') {
+            sh 'npm run build'
+            echo "Build completed"
+        }
+        
     }
- 
- 
-
-      
-       stage('Build'){
-            steps{
-                sh'npm build'
-            }
-         }
         stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
