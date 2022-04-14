@@ -23,13 +23,13 @@ pipeline {
                 sh './script/deploy.sh'
             }
         }
-        stage('ExecuteSonarQubeReport') {
-         steps {
-             script{
+        // stage('ExecuteSonarQubeReport') {
+        //  steps {
+        //      script{
                // sh 'npm run sonar'
-    }
+    // }
       
-        }
-        }
+    //     }
+    //     }
     }  
    }
