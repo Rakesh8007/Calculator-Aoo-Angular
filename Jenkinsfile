@@ -8,7 +8,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building'
-                sh 'sudo npm install -g @angular/cli'
+                sh 'chmod 777 /usr/lib/node_modules'
+                sh 'npm install -g @angular/cli'
                 sh 'npm install'
                 sh 'npm run build'
             }
