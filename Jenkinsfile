@@ -8,7 +8,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building'
-                sh 'chown -R $whoami:$whoami /usr/lib/node_modules'
                 sh 'npm install -g @angular/cli'
                 sh 'npm install'
                 sh 'npm run build'
