@@ -4,14 +4,14 @@ node(){
     }
         
     stage('Install dependencies') {
-        nodejs('NodeJs') {
+        nodejs('Nodejs') {
             sh 'npm install'
             echo "Modules installed"
         }
         
     }
     stage('Build') {
-        nodejs('NodeJs') {
+        nodejs('Nodejs') {
             sh 'npm run build'
             echo "Build completed"
         }
@@ -33,7 +33,7 @@ node(){
     }
 }
 
-node('NodeJs') {
+node('Nodejs') {
     echo 'Unstash'
     unstash 'buildArtifacts'
     echo 'Artifacts copied'
