@@ -1,36 +1,44 @@
-pipeline {
-    agent any
+node(){
+    stage('Cloning Git') {
+        checkout scm
+    }
+        
+    stage('Install dependencies') {
+        nodejs('nodejs') {
+            sh 'npm install'
+            echo "Modules installed"
+        }
+        
+    }
+    stage('Build') {
+        nodejs('nodejs') {
+            sh 'npm run build'
+            echo "Build completed"
+        }
+        
+    }
 
-    stages {
-        // stage('install dependencies'){
-        //     sh 'npm install'
-        // }
-        stage('Build') {
-            steps {
-                echo 'building'
-                sh 'npm install @angular/cli'
-                sh 'npm install'
-                sh 'npm run build'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-          //      sh './script/deploy.sh'
-            }
-        }
-        // stage('ExecuteSonarQubeReport') {
-        //  steps {
-        //      script{
-               // sh 'npm run sonar'
-    // }
-      
-    //     }
-    //     }
-    }  
-   }
+    stage('Package Build') {
+        sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
+    }
+
+    stage('Artifacts Creation') {
+        fingerprint 'bundle.tar.gz'
+        archiveArtifacts 'bundle.tar.gz'
+        echo "Artifacts created"
+    }
+
+    stage('Stash changes') {
+        stash allowEmpty: true, includes: 'bundle.tar.gz', name: 'buildArtifacts'
+    }
+}
+
+node('awsnode') {
+    echo 'Unstash'
+    unstash 'buildArtifacts'
+    echo 'Artifacts copied'
+
+    echo 'Copy'
+    sh "yes | sudo cp -R bundle.tar.gz /var/www/html && cd /var/www/html && sudo tar -xvf bundle.tar.gz"
+    echo 'Copy completed'
+}
