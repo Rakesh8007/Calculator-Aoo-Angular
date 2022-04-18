@@ -4,14 +4,14 @@ node(){
     }
         
     stage('Install dependencies') {
-        nodejs('nodejs') {
+        nodejs('NodeJs') {
             sh 'npm install'
             echo "Modules installed"
         }
         
     }
     stage('Build') {
-        nodejs('nodejs') {
+        nodejs('NodeJs') {
             sh 'npm run build'
             echo "Build completed"
         }
@@ -19,7 +19,7 @@ node(){
     }
 
     stage('Package Build') {
-        sh "tar -zcvf bundle.tar.gz dist/automationdemo/"
+        sh "tar -zcvf bundle.tar.gz dist/Ang-Calc/"
     }
 
     stage('Artifacts Creation') {
@@ -33,7 +33,7 @@ node(){
     }
 }
 
-node('awsnode') {
+node('aws-node') {
     echo 'Unstash'
     unstash 'buildArtifacts'
     echo 'Artifacts copied'
