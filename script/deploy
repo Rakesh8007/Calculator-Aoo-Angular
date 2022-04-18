@@ -1,7 +1,7 @@
 #!/bin/sh
 ssh ec2-user@13.127.230.126 <<EOF
     cd ~/Calculator-Aoo-Angular
-    git pull origin master
+    git pull origin main
     curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
     . ~/.nvm/nvm.sh
     npm install v10.11.0
