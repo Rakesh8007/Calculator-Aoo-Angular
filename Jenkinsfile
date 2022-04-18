@@ -19,7 +19,7 @@ node(){
     }
 
     stage('Package Build') {
-        sh "tar -zcvf bundle.tar.gz dist/Ang-Calc/"
+        sh "tar -zcvf bundle.tar.gz dist/Ang-Calc"
     }
 
     stage('Artifacts Creation') {
